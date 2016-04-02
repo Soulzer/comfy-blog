@@ -5,6 +5,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
   # due to fancy routing it's hard to say if we need show or index
   # action. let's figure it out here.
   def serve
+     @posts = Post.all
     # if there are more than one blog, blog_path is expected
     if @cms_site.blogs.count >= 2
       params[:blog_path] = params.delete(:slug) if params[:blog_path].blank?
