@@ -40,7 +40,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
   end
 
   def show
-    @posts = @blog.posts
+    @posts = @blog.posts.order("published_at DESC").limit(5)
     @post = if params[:slug] && params[:year] && params[:month]
       @blog.posts.published.where(:year => params[:year], :month => params[:month], :slug => params[:slug]).first!
     else
