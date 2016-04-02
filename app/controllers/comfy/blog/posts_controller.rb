@@ -39,6 +39,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
   end
 
   def show
+    @post = Post.all
     @post = if params[:slug] && params[:year] && params[:month]
       @blog.posts.published.where(:year => params[:year], :month => params[:month], :slug => params[:slug]).first!
     else
