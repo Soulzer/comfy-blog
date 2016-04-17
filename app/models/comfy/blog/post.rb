@@ -9,6 +9,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   
   has_many :comments,
     :dependent => :destroy
+  has_many :categories,
   
   # -- Validations ----------------------------------------------------------
   validates :blog_id, :title, :slug, :year, :month, :content,
