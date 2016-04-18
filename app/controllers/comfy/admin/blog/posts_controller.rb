@@ -5,7 +5,7 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
   before_action :load_post,  :only => [:edit, :update, :destroy]
 
   def index
-    @posts = comfy_paginate(@blog.posts.order(:published_at))
+    #@posts = comfy_paginate(@blog.posts.order(:published_at))
     @posts = Post.where(:comfy_blog_category_id => 1).limit(2).order("created_at DESC")
   end
 
