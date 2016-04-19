@@ -21,7 +21,7 @@ protected
   rescue ActiveRecord::RecordNotFound
     flash[:error] = t('comfy.admin.blog.posts.not_found')
     redirect_to comfy_blog_posts_path(@cms_site.path, @blog.path)
-  @comments = @post.comments.paginate(:page => params[:page], :per_page => 2)
+  
   end
 
   def build_comment
