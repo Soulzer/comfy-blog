@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 gem 'kaminari'
+gem 'rmagick'
 
 group :development do
   gem 'awesome_print'
