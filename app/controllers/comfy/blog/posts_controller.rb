@@ -51,6 +51,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
       @blog.posts.published.where(:slug => params[:slug]).first!
     end
     @comment = @post.comments.new
+    @comments = @post.comments.paginate(:page => params[:page], :per_page => 2)
 
   rescue ActiveRecord::RecordNotFound
     render :cms_page => '/404', :status => 404
