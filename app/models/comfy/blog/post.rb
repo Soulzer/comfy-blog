@@ -4,7 +4,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   
   # -- Relationships --------------------------------------------------------
   belongs_to :blog
-  has_attached_file :avatar, styles: { featured: "680x480#", normal: "324x200#", medium: "324x200#", thumb: "100x100#" }, default_url: "/images/:style/avatar9.jpg"
+  has_attached_file :avatar, styles: { featured: "680x480#", normal: "324x200#", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/avatar9.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   
   has_many :comments,
