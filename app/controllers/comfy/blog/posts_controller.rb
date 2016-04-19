@@ -37,6 +37,8 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
         @posts = scope.limit(limit)
       end
     end
+    @feature_post = @blog.posts.published.where(comfy_blog_category_id: 1).order("published_at DESC").limit(2)
+    @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").limit(4)
   end
 
   def show
