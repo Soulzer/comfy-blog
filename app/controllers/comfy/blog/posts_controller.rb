@@ -41,9 +41,30 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").paginate(:page => params[:page], :per_page => 4)
     @quote_post = @blog.posts.published.where(comfy_blog_category_id: 3).order("published_at DESC").limit(1)
     @video_post = @blog.posts.published.where(comfy_blog_category_id: 4).order("published_at DESC").limit(1)
-    
-    
-  end
+   end
+
+  def indexall
+    scope = if params[:year]
+      scope = @blog.posts.published.for_year(params[:year])
+      params[:month] ? scope.for_month(params[:month]) : scope
+    else
+      @blog.posts.published
+    end
+
+    limit = ComfyBlog.config.posts_per_page
+    respond_to do |format|
+      format.html do
+        @posts = comfy_paginate(scope, limit)
+      end
+      format.rss do
+        @posts = scope.limit(limit)
+      end
+    end
+    @feature_post = @blog.posts.published.where(comfy_blog_category_id: 1).order("published_at DESC").paginate(:page => params[:page], :per_page => 2)
+    @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").paginate(:page => params[:page], :per_page => 4)
+    @quote_post = @blog.posts.published.where(comfy_blog_category_id: 3).order("published_at DESC").limit(1)
+    @video_post = @blog.posts.published.where(comfy_blog_category_id: 4).order("published_at DESC").limit(1)
+   end
 
   def show
     @posts = @blog.posts.order("published_at DESC").limit(5)
