@@ -37,8 +37,8 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
         @posts = scope.limit(limit)
       end
     end
-    @feature_post = @blog.posts.published.where(comfy_blog_category_id: 1).order("published_at DESC").limit(2).paginate(:page => params[:page], :per_page => 2)
-    @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").limit(4).paginate(:page => params[:page], :per_page => 4)
+    @feature_post = @blog.posts.published.where(comfy_blog_category_id: 1).order("published_at DESC").paginate(:page => params[:page], :per_page => 2)
+    @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").paginate(:page => params[:page], :per_page => 4)
     @quote_post = @blog.posts.published.where(comfy_blog_category_id: 3).order("published_at DESC").limit(1)
     @video_post = @blog.posts.published.where(comfy_blog_category_id: 4).order("published_at DESC").limit(1)
     
