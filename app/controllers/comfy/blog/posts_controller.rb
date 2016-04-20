@@ -41,6 +41,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     @normal_post = @blog.posts.published.where(comfy_blog_category_id: 2).order("published_at DESC").limit(4)
     @quote_post = @blog.posts.published.where(comfy_blog_category_id: 3).order("published_at DESC").limit(1)
     @video_post = @blog.posts.published.where(comfy_blog_category_id: 4).order("published_at DESC").limit(1)
+    @comment = @post.comments.new
   end
 
   def show
