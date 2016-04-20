@@ -14,7 +14,7 @@ class ActionDispatch::Routing::Mapper
         post ':slug/comments' => 'comments#create', :as => :comments
         get  ':slug'          => 'posts#show',     :as => :post
         get  '/'              => 'posts#index',     :as => :posts
-        get '/indexall' => 'posts#indexall', :as => :posts_all
+        get 'indexall' => 'posts#indexall', :as => :posts_all
       end
     end
   end
