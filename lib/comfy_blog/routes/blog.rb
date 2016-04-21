@@ -6,7 +6,7 @@ class ActionDispatch::Routing::Mapper
     
     scope :module => :comfy, :as => :comfy do
 
-       l
+       
   
       namespace :blog, :path => path, :constraints => {:blog_path => /\w[a-z0-9_-]*/} do
         with_options :constraints => {:year => /\d{4}/, :month => /\d{1,2}/} do |o|
