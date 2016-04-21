@@ -14,7 +14,11 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     load_blog
 
     if params[:slug].present?
+      if params[:slug] == "indexall"
+        indexall && render(:indexall)
+      else
       show && render(:show)
+      end
     else
       index && render(:index)
     end
