@@ -44,6 +44,13 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
    end
 
   def indexall
+    
+        if @cms_site.blogs.count >= 2
+      params[:blog_path] = params.delete(:slug) if params[:blog_path].blank?
+    end
+
+    load_blog
+    
     scope = if params[:year]
       scope = @blog.posts.published.for_year(params[:year])
       params[:month] ? scope.for_month(params[:month]) : scope
