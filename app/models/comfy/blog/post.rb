@@ -1,5 +1,5 @@
 class Comfy::Blog::Post < ActiveRecord::Base
-  
+  acts_as_taggable_on :tags
   self.table_name = 'comfy_blog_posts'
   
   # -- Relationships --------------------------------------------------------
