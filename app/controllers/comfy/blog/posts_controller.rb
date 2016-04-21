@@ -71,9 +71,9 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
         @posts = scope.limit(limit)
       end
     end
+    @posts = @blog.posts.published.order("published_at DESC").paginate(:page => params[:page], :per_page => 5)
    end
-   @posts = @blog.posts.published.order("published_at DESC").paginate(:page => params[:page], :per_page => 5)
- end
+   
 
   def show
     @posts = @blog.posts.order("published_at DESC").limit(5)
