@@ -5,7 +5,9 @@ class ActionDispatch::Routing::Mapper
     path = ['(:cms_path)', options[:path], '(:blog_path)'].join('/')
     
     scope :module => :comfy, :as => :comfy do
-      get 'indexall' => 'posts#indexall', :as => :posts_all
+     namespace :blog_index, :path => path do
+       get 'indexall' => 'posts#indexall', :as => :posts_all
+      end
       namespace :blog, :path => path, :constraints => {:blog_path => /\w[a-z0-9_-]*/} do
         with_options :constraints => {:year => /\d{4}/, :month => /\d{1,2}/} do |o|
           o.get ':year'               => 'posts#index', :as => :posts_of_year
