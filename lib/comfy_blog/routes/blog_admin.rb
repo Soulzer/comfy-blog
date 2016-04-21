@@ -9,6 +9,7 @@ class ActionDispatch::Routing::Mapper
         namespace :blog, :as => :admin, :path => path, :except => [:show] do
           resources :blogs do
             resources :posts
+            resources :tags, only: [:index, :show]
             resources :comments, :only => [:index, :destroy] do
               patch :toggle_publish, :on => :member
             end
