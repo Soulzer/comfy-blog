@@ -84,8 +84,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     end
     @comment = @post.comments.new
     @comments = @post.comments.paginate(:page => params[:page], :per_page => 2)
-    @tag =  ActsAsTaggableOn::Tag.find(params[:id])
-    @posts = Post.tagged_with(@tag.name)
+   
 
   rescue ActiveRecord::RecordNotFound
     render :cms_page => '/404', :status => 404
