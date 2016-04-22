@@ -36,7 +36,9 @@ class Comfy::Blog::Post < ActiveRecord::Base
   before_validation :set_slug,
                     :set_published_at,
                     :set_date
-  
+  def self.tagged_with(name)
+  Tag.find_by_name!(name).posts
+end
 protected
   
   def set_slug
