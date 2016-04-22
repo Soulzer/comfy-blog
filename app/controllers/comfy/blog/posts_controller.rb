@@ -77,6 +77,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
    
     @posts = @blog.posts.published.order("published_at DESC").paginate(:page => params[:page], :per_page => 5)
    end
+ end
    
 
   def show
