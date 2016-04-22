@@ -13,12 +13,13 @@ class ActionDispatch::Routing::Mapper
           o.get ':year'               => 'posts#index', :as => :posts_of_year
           o.get ':year/:month'        => 'posts#index', :as => :posts_of_month
           o.get ':year/:month/:slug'  => 'posts#show',  :as => :posts_dated
+          o.get ':tag', to: 'posts#indexall', as: :tag
         end
         post ':slug/comments' => 'comments#create', :as => :comments
         get  ':slug'          => 'posts#serve',     :as => :post
         get  '/'              => 'posts#serve',     :as => :posts
         get 'all_posts' => 'posts#serve', :as => :posts_all
-        get ':tag', to: 'posts#indexall', as: :tag
+        
         
       end
     end
