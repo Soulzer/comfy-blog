@@ -18,6 +18,7 @@ class ActionDispatch::Routing::Mapper
         get  ':slug'          => 'posts#serve',     :as => :post
         get  '/'              => 'posts#serve',     :as => :posts
         get 'all_posts' => 'posts#serve', :as => :posts_all
+        get 'tags/:tag', to: 'posts#index', as: :tag
         
       end
     end
