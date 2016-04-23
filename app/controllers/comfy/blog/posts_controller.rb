@@ -72,7 +72,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
       end
     end
     if params[:tag]
-    @posts = @blog.posts.tagged_with(params[:tag])
+    @posts = @blog.posts.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
   else
    
     @posts = @blog.posts.published.order("published_at DESC").paginate(:page => params[:page], :per_page => 5)
