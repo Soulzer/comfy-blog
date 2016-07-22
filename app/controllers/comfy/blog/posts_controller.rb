@@ -1,6 +1,6 @@
 class Comfy::Blog::PostsController < Comfy::Blog::BaseController
 
-  skip_before_action :load_blog, :only => [:serve]
+  skip_before_action :load_blog, :only => [:serve, :indexall]
 
   # due to fancy routing it's hard to say if we need show or index
   # action. let's figure it out here.
